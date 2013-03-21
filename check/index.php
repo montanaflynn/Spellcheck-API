@@ -10,7 +10,7 @@ function spell_word($word)
   global $pspell;
   
   $word = $word[0];
-  
+
   // ACROYNMS / UPPERCASE
   if (preg_match('/^[A-Z]*$/',$word))
   {
@@ -36,13 +36,18 @@ function spell_check($string)
 }
 
 // Finally let's begin the show
-$pspell = pspell_new('en','canadian','','utf-8',PSPELL_FAST);
 
-$text = $_GET['text'];
+$pspell = pspell_new('en','american','','utf-8',PSPELL_NORMAL);
 
-if ($text) {
+$text = (string) $_GET['text'];
+
+if ($text) 
+{
   echo spell_check($text);
   die();
+}
+else {
+  echo "Please provide text parameter.";
 }
 
 
