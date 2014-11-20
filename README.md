@@ -43,7 +43,7 @@ curl "localhost:1337?text=wrng"
 
 Didn't this use to be a PHP project?
 
-Yes indeed, however the PHP version is no longer supported. The source code is still available before this commit: https://github.com/montanaflynn/Spellcheck-API/tree/5503d6ee77e5fdccae1d2fc418c98236080f58a8
+Yes indeed, however the PHP version is no longer supported. The [source code](https://github.com/montanaflynn/Spellcheck-API/tree/5503d6ee77e5fdccae1d2fc418c98236080f58a8) is still available.
 
 ### Contributing
 
