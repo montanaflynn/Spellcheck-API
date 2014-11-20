@@ -5,12 +5,29 @@
   "description": "Simple spellcheck API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Montana Flynn",
   "license": "MIT",
   "dependencies": {
     "koa": "^0.13.0",
     "spellchecker": "^1.0.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/montanaflynn/Spellcheck-API.git"
+  },
+  "keywords": [
+    "spellcheck",
+    "spelling",
+    "api",
+    "server",
+    "koa"
+  ],
+  "bugs": {
+    "url": "https://github.com/montanaflynn/Spellcheck-API/issues"
+  },
+  "homepage": "https://github.com/montanaflynn/Spellcheck-API"
 }
