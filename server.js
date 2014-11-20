@@ -6,7 +6,6 @@ var portNumber = process.argv[2] || 8080
 
 app.use(function *(next){
   this.response.type = 'json';
-  this.res.setHeader('x-powered-by', "Blood, Sweat and Magic")
   if (!this.request.query.text){
     var errorMsg = {error: "Missing 'text' query parameter"};
     this.body = JSON.stringify(errorMsg);
@@ -17,31 +16,46 @@ app.use(function *(next){
   
 }).listen(portNumber)
 
-// So hacky... must refactor
 function getSpellingSuggestions(str) {
-  var words = str.split(' ');
   var misspellings = false, output = {}, suggestion = [], corrections = {};
   output.original = str;
+
+  var words = str.split(' ');
+  var lastChar = getEnding(words[words.length - 1])
+
+  var word, noPunctuation, correctSpelling, hasMistakes;
   for (var i = 0; i < words.length; i++) {
+
     word = words[i];
+    noPunctuation = word.replace(/\W/g, '');
+
     if (getEnding(word)){
       word = word.slice(0,-1)
     }
+
     if (spc.isMisspelled(word)) {
-      misspellings = true;
-      var correctSpelling = spc.getCorrectionsForMisspelling(word);
-      if (i === words.length -1 && getEnding(str))
-        correctSpelling[0] += "."
-      if (correctSpelling.length)
-        suggestion.push(correctSpelling[0]);
-      corrections[word] = correctSpelling;
+      hasMistakes = true;
+      correctSpelling = spc.getCorrectionsForMisspelling(word);
+      if (correctSpelling.length) {
+        corrections[word] = correctSpelling;
+      } else {
+        corrections[word] = null;
+      }
     }
   }
 
-  if (misspellings){
-    output.suggestion = suggestion.length ? suggestion.join(' ') : null;
+  for (correction in corrections) {
+    if (correction && corrections[correction]) {
+      var regex = new RegExp(correction, 'g');
+      str = str.replace(regex, corrections[correction][0]);
+    }
+  }
+
+  if (hasMistakes){
     output.corrections = corrections;
+    output.suggestion = str
   } else {
+    output.corrections = false;
     output.suggestion = false;
   }
 
