@@ -1,0 +1,16 @@
+{
+  "name": "spellcheckapi",
+  "version": "0.1.0",
+  "engine": "node >= 0.11.0"
+  "description": "Simple spellcheck API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Montana Flynn",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^0.13.0",
+    "spellchecker": "^1.0.1"
+  }
+}

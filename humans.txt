@@ -1,8 +1,0 @@
-/* ABOUT */
-
-Project Name: Spellcheck API
-Project URL: github.com/montanaflynn/Spellcheck-API
-
-/* CREDITS */
-
-Software: PHP, apress. All the developers.
