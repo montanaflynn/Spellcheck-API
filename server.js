@@ -23,7 +23,7 @@ function getSpellingSuggestions(str) {
   var words = str.split(' ');
   var lastChar = getEnding(words[words.length - 1])
 
-  var word, noPunctuation, correctSpelling, hasMistakes;
+  var word, noPunctuation, correctSpelling, hasMistakes, hasCorrections;
   for (var i = 0; i < words.length; i++) {
 
     word = words[i];
@@ -37,6 +37,7 @@ function getSpellingSuggestions(str) {
       hasMistakes = true;
       correctSpelling = spc.getCorrectionsForMisspelling(word);
       if (correctSpelling.length) {
+        hasCorrections = true;
         corrections[word] = correctSpelling;
       } else {
         corrections[word] = null;
@@ -52,10 +53,9 @@ function getSpellingSuggestions(str) {
   }
 
   if (hasMistakes){
+    output.suggestion = hasCorrections ? str : null;
     output.corrections = corrections;
-    output.suggestion = str
   } else {
-    output.corrections = false;
     output.suggestion = false;
   }
 
