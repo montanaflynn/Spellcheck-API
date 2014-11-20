@@ -20,7 +20,7 @@ app.use(function *(next){
 // So hacky... must refactor
 function getSpellingSuggestions(str) {
   var words = str.split(' ');
-  var output = {}, suggestion = [], corrections = {};
+  var misspellings = false, output = {}, suggestion = [], corrections = {};
   output.original = str;
   for (var i = 0; i < words.length; i++) {
     word = words[i];
@@ -28,16 +28,18 @@ function getSpellingSuggestions(str) {
       word = word.slice(0,-1)
     }
     if (spc.isMisspelled(word)) {
+      misspellings = true;
       var correctSpelling = spc.getCorrectionsForMisspelling(word);
       if (i === words.length -1 && getEnding(str))
         correctSpelling[0] += "."
-      suggestion.push(correctSpelling.length ? correctSpelling[0] : word);
+      if (correctSpelling.length)
+        suggestion.push(correctSpelling[0]);
       corrections[word] = correctSpelling;
     }
   }
 
-  if (suggestion.length){
-    output.suggestion = suggestion.join(' ');
+  if (misspellings){
+    output.suggestion = suggestion.length ? suggestion.join(' ') : null;
     output.corrections = corrections;
   } else {
     output.suggestion = false;
