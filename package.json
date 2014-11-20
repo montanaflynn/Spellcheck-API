@@ -1,6 +1,6 @@
 {
   "name": "spellcheck-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engine": "node >= 0.11.0",
   "description": "Simple spellcheck API",
   "main": "server.js",
