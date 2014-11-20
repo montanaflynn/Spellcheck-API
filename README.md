@@ -1,6 +1,8 @@
 # Spellcheck API
 
-[HTTP spellcheck API](https://www.mashape.com/montanaflynn/spellcheck) based off hunspell. The API server uses Koa so it needs node version 0.11.0 or higher and to be ran with the `--harmony` flag. It's better this way.
+[HTTP spellcheck API](https://www.mashape.com/montanaflynn/spellcheck) based off hunspell. 
+
+__The API server needs node version 0.11.0 or higher and to be ran with the `--harmony` flag.__ 
 
 ### Install
 
@@ -11,7 +13,7 @@ npm install
 
 ### Usage
 
-node ./server.js [port]
+node --harmony ./server.js [port]
 
 Default port is `8080`.
 
