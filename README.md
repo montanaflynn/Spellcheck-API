@@ -39,6 +39,55 @@ curl "localhost:1337?text=wrng"
 }
 ```
 
+### Responses
+
+If there is no `text` querystring parameter return error message:
+
+```json
+{"error":"Missing 'text' query parameter"}
+```
+
+If there are no mistakes return false for suggestion.
+
+```json
+{
+  "original": "the words are fine.",
+  "suggestion": false
+}
+```
+
+If there are mistakes but no suggestions return null for suggestion and corrections.
+
+```json
+{
+  "original": "dfdgdfg is gfdgdfsg.",
+  "suggestion": null,
+  "corrections": {
+    "dfdgdfg": null,
+    "gfdgdfsg": null
+  }
+}
+```
+
+If there are mistakes and suggestions return an array for each correction and replace the word in the `suggestion` string.
+
+```json
+{
+  "original": "thefdeee123 is theedffdfde is baddd.",
+  "suggestion": "thefdeee123 is theedffdfde is bad.",
+  "corrections": {
+    "thefdeee123": null,
+    "theedffdfde": null,
+    "baddd": [
+      "bad",
+      "addd",
+      "bddd",
+      "badd"
+    ]
+  }
+}
+```
+
 ### FAQ
 
 Didn't this use to be a PHP project?
