@@ -1,8 +1,6 @@
 # Spellcheck API
 
-A [HTTP spellcheck API](https://www.mashape.com/montanaflynn/spellcheck) based off hunspell written Node.js. Because the API uses Koa it needs at least node > v.11.* and ran with the --harmony flag. It's better this way.
-
-**PHP version no longer supported but still available before this commit: https://github.com/montanaflynn/Spellcheck-API/tree/5503d6ee77e5fdccae1d2fc418c98236080f58a8**
+A [HTTP spellcheck API](https://www.mashape.com/montanaflynn/spellcheck) based off hunspell written Node.js. The API server uses Koa so it needs node version 0.11.0 or higher and to be ran with the `--harmony` flag. It's better this way.
 
 ### Install
 
@@ -38,6 +36,12 @@ curl "localhost:1337?text=wrng"
   }
 }
 ```
+
+### FAQ
+
+Didn't this use to be a PHP project?
+
+Yes indeed, however the PHP version no longer supported but the source is still available before this commit: https://github.com/montanaflynn/Spellcheck-API/tree/5503d6ee77e5fdccae1d2fc418c98236080f58a8
 
 ### Contributing
 
